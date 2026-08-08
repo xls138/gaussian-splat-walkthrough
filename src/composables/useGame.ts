@@ -2071,7 +2071,9 @@ export function useGame(canvasRef: Ref<HTMLCanvasElement | null>) {
       const data = JSON.parse(localStorage.getItem(SETTINGS_KEY) ?? "{}");
       data.lookSensitivity = s;
       localStorage.setItem(SETTINGS_KEY, JSON.stringify(data));
-    } catch { /* ignore */ }
+    } catch {
+      /* ignore */
+    }
   }
 
   function setLookSensitivity(s: Sensitivity): void {
@@ -2085,9 +2087,12 @@ export function useGame(canvasRef: Ref<HTMLCanvasElement | null>) {
       const stored = localStorage.getItem(SETTINGS_KEY);
       if (stored) {
         const parsed = JSON.parse(stored);
-        if (typeof parsed.minimapEnabled === "boolean") return parsed.minimapEnabled;
+        if (typeof parsed.minimapEnabled === "boolean")
+          return parsed.minimapEnabled;
       }
-    } catch { /* ignore */ }
+    } catch {
+      /* ignore */
+    }
     return true;
   }
 
@@ -2096,7 +2101,9 @@ export function useGame(canvasRef: Ref<HTMLCanvasElement | null>) {
       const data = JSON.parse(localStorage.getItem(SETTINGS_KEY) ?? "{}");
       data.minimapEnabled = enabled;
       localStorage.setItem(SETTINGS_KEY, JSON.stringify(data));
-    } catch { /* ignore */ }
+    } catch {
+      /* ignore */
+    }
   }
 
   function setMinimapEnabled(enabled: boolean): void {
@@ -2110,9 +2117,12 @@ export function useGame(canvasRef: Ref<HTMLCanvasElement | null>) {
       const stored = localStorage.getItem(SETTINGS_KEY);
       if (stored) {
         const parsed = JSON.parse(stored);
-        if (typeof parsed.debugModeEnabled === "boolean") return parsed.debugModeEnabled;
+        if (typeof parsed.debugModeEnabled === "boolean")
+          return parsed.debugModeEnabled;
       }
-    } catch { /* ignore */ }
+    } catch {
+      /* ignore */
+    }
     return false;
   }
 
@@ -2121,7 +2131,9 @@ export function useGame(canvasRef: Ref<HTMLCanvasElement | null>) {
       const data = JSON.parse(localStorage.getItem(SETTINGS_KEY) ?? "{}");
       data.debugModeEnabled = enabled;
       localStorage.setItem(SETTINGS_KEY, JSON.stringify(data));
-    } catch { /* ignore */ }
+    } catch {
+      /* ignore */
+    }
   }
 
   function setDebugModeEnabled(enabled: boolean): void {
@@ -2156,12 +2168,17 @@ export function useGame(canvasRef: Ref<HTMLCanvasElement | null>) {
     description: string;
   }> = [];
 
-  let activeExhibit: typeof EXHIBITS[number] | null = null;
+  let activeExhibit: (typeof EXHIBITS)[number] | null = null;
 
   function updateExhibitState(): void {
     activeExhibit = null;
-    const roomExhibits = EXHIBITS.filter((e) => e.roomId === state.currentRoom?.id);
-    if (!roomExhibits.length) { exhibitPromptVisible.value = false; return; }
+    const roomExhibits = EXHIBITS.filter(
+      (e) => e.roomId === state.currentRoom?.id,
+    );
+    if (!roomExhibits.length) {
+      exhibitPromptVisible.value = false;
+      return;
+    }
 
     getCameraForward(tempForward);
     tempForward.y = 0;
@@ -2175,7 +2192,11 @@ export function useGame(canvasRef: Ref<HTMLCanvasElement | null>) {
       const hDist = Math.hypot(dx, dz);
       if (hDist > ex.promptRadius) continue;
 
-      const toExhibit = new pc.Vec3(pos.x - state.position.x, 0, pos.z - state.position.z).normalize();
+      const toExhibit = new pc.Vec3(
+        pos.x - state.position.x,
+        0,
+        pos.z - state.position.z,
+      ).normalize();
       const dot = tempForward.dot(toExhibit);
       if (dot < Math.cos(30 * pc.math.DEG_TO_RAD)) continue;
 
@@ -2259,10 +2280,4 @@ export function useGame(canvasRef: Ref<HTMLCanvasElement | null>) {
     closeExhibitDesc,
     setupTouchControls,
   };
-
-
-
-
-
-
 }

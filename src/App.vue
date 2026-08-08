@@ -3,7 +3,34 @@
   <div id="app-ui" class="ui" aria-live="polite">
     <div ref="doorPromptsRef" class="door-prompts" aria-hidden="true"></div>
 
-    <HudBar room-title="主展厅" room-state="loading" resource-tier="高画质" />
+    <HudBar :room-title="roomTitle" :room-state="roomState" :resource-tier="resourceTier" />
+
+    <DebugStats :visible="debugModeEnabled" :text="debugStatsText" />
+
+    <MiniMap :visible="minimapEnabled && hasStarted" :state="minimapState" />
+
+    <StartPrompt :visible="startVisible" @click="startGame" />
+
+    <InteractPrompt :visible="interactVisible" :label="interactLabel" :keyboard-prompt="isKeyboardPrompt"
+      @click="interact" />
+
+    <InteractPrompt :visible="exhibitPromptVisible && !interactVisible" :label="exhibitPromptLabel"
+      :keyboard-prompt="isKeyboardPrompt" @click="activateExhibit" />
+
+    <DesktopHelp />
+
+    <TouchControls ref="touchControlsRef" :is-crouching="isCrouching" />
+
+    <ToastMessage :message="toastMessage" :visible="toastVisible" :is-error="toastError" />
+
+    <AssetNotice :message="assetNotice" :visible="assetNoticeVisible" />
+
+    <DebugCoordinate :text="debugCoordText" :visible="debugCoordVisible" />
+
+    <FadeOverlay :visible="fadeVisible" :progress="loadingProgress" />
+
+    <ExhibitDesc :visible="exhibitDescVisible" :title="exhibitDescTitle" :time="exhibitDescTime"
+      :description="exhibitDescText" :image="exhibitDescImage" :url="exhibitDescUrl" @close="closeExhibitDesc" />
 
     <button v-if="fullscreenButtonVisible" class="fullscreen-button" type="button" aria-label="横屏全屏"
       @click="enterLandscapeFullscreen">
@@ -16,8 +43,7 @@
       </svg>
     </button>
 
-    <!-- @click="toggleMenu" -->
-    <button class="menu-button" type="button" aria-label="菜单">
+    <button class="menu-button" type="button" aria-label="菜单" @click="toggleMenu">
       <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5"
         stroke-linecap="round">
         <line x1="3" y1="5" x2="17" y2="5" />
@@ -45,18 +71,84 @@
       </div>
     </div>
 
+    <SettingsDrawer :open="menuOpen" :render-quality="renderQuality" :look-sensitivity="lookSensitivity"
+      :minimap-enabled="minimapEnabled" :debug-mode-enabled="debugModeEnabled" @close="closeMenu"
+      @update:render-quality="setRenderQuality" @update:look-sensitivity="setLookSensitivity"
+      @update:minimap-enabled="setMinimapEnabled" @update:debug-mode-enabled="setDebugModeEnabled" />
+
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref, onBeforeUnmount, onMounted, watch, nextTick } from "vue";
+import { useGame } from "./composables/useGame";
 
 import HudBar from "./components/HudBar.vue";
+import DebugStats from "./components/DebugStats.vue";
+import MiniMap from "./components/MiniMap.vue";
+import StartPrompt from "./components/StartPrompt.vue";
+import InteractPrompt from "./components/InteractPrompt.vue";
+import DesktopHelp from "./components/DesktopHelp.vue";
+import TouchControls from "./components/TouchControls.vue";
+import ToastMessage from "./components/ToastMessage.vue";
+import AssetNotice from "./components/AssetNotice.vue";
+import DebugCoordinate from "./components/DebugCoordinate.vue";
+import FadeOverlay from "./components/FadeOverlay.vue";
+import ExhibitDesc from "./components/ExhibitDesc.vue";
+import SettingsDrawer from "./components/SettingsDrawer.vue";
 
 const canvasRef = ref<HTMLCanvasElement | null>(null);
+const touchControlsRef = ref<InstanceType<typeof TouchControls> | null>(null);
 const iosInstallPromptVisible = ref(false);
 const fullscreenButtonVisible = ref(true);
 let standaloneMedia: MediaQueryList | null = null;
+
+const {
+  roomTitle,
+  roomState,
+  resourceTier,
+  toastMessage,
+  toastVisible,
+  toastError,
+  assetNotice,
+  assetNoticeVisible,
+  debugCoordText,
+  debugCoordVisible,
+  debugModeEnabled,
+  debugStatsText,
+  loadingProgress,
+  fadeVisible,
+  startVisible,
+  interactVisible,
+  interactLabel,
+  isKeyboardPrompt,
+  isCrouching,
+  hasStarted,
+  menuOpen,
+  renderQuality,
+  lookSensitivity,
+  minimapEnabled,
+  minimapState,
+  exhibitPromptVisible,
+  exhibitPromptLabel,
+  exhibitDescVisible,
+  exhibitDescTitle,
+  exhibitDescTime,
+  exhibitDescText,
+  exhibitDescImage,
+  exhibitDescUrl,
+  startGame,
+  interact,
+  toggleMenu,
+  closeMenu,
+  setRenderQuality,
+  setLookSensitivity,
+  setMinimapEnabled,
+  setDebugModeEnabled,
+  activateExhibit,
+  closeExhibitDesc,
+  setupTouchControls,
+} = useGame(canvasRef);
 
 function isAppleMobilePlatform(): boolean {
   const ua = navigator.userAgent;
@@ -138,19 +230,14 @@ onMounted(async () => {
     if (shouldShowIosInstallPrompt()) iosInstallPromptVisible.value = true;
   }
 
-  // watch(
-  //   () => touchControlsRef.value,
-  //   (tc) => {
-  //     if (!tc) return;
-  //     setupTouchControls(
-  //       tc.stickRef,
-  //       tc.knobRef,
-  //       tc.crouchRef,
-  //       document.querySelector("#start-prompt .start-button") as HTMLElement | null,
-  //     );
-  //   },
-  //   { immediate: true },
-  // );
+  watch(
+    () => touchControlsRef.value,
+    (tc) => {
+      if (!tc) return;
+      setupTouchControls(tc.stickRef, tc.knobRef, tc.crouchRef);
+    },
+    { immediate: true },
+  );
 });
 
 onBeforeUnmount(() => {
