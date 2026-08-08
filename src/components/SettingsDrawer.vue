@@ -96,7 +96,7 @@ function setDebugMode(value: boolean) {
 
               <section class="settings-section">
                 <div class="settings-about">
-                  <h3 class="settings-app-name">Geekerwan RoomTour</h3>
+                  <h3 class="settings-app-name">Company RoomTour</h3>
                   <p class="settings-app-desc">
                     基于 Gaussian Splatting 的实景漫游原型，支持第一人称移动、碰撞检测和房间切换。
                   </p>
@@ -397,11 +397,6 @@ function setDebugMode(value: boolean) {
   font-size: 13px;
 }
 
-.credits-btns {
-  flex-direction: column;
-  margin-bottom: 0;
-}
-
 .quality-option {
   flex: 1;
   min-height: 42px;
@@ -417,34 +412,6 @@ function setDebugMode(value: boolean) {
   cursor: pointer;
   transition: background 180ms ease, border-color 180ms ease, color 180ms ease;
   padding: 0 12px;
-}
-
-.icon-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-}
-
-.contributors-btns {
-  display: flex;
-  gap: 4px;
-}
-
-.contributors-option {
-  flex: 1;
-  border: 1px solid rgba(255, 255, 255, 0.26);
-  border-radius: 999px;
-  background: rgba(70, 74, 72, 0.48);
-  -webkit-backdrop-filter: blur(24px) saturate(132%);
-  backdrop-filter: blur(24px) saturate(132%);
-  color: rgba(255, 255, 255, 0.82);
-  font: inherit;
-  font-size: 12px;
-  font-weight: 400;
-  cursor: pointer;
-  transition: background 180ms ease, border-color 180ms ease, color 180ms ease;
-  padding: 4px;
 }
 
 .quality-option:hover {

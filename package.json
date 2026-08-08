@@ -6,13 +6,15 @@
   "scripts": {
     "dev": "vite --host 0.0.0.0",
     "build": "vue-tsc -b && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview --host 0.0.0.0",
+    "splat:help": "splat-transform --help"
   },
   "dependencies": {
     "playcanvas": "^2.21.3",
     "vue": "^3.5.40"
   },
   "devDependencies": {
+    "@playcanvas/splat-transform": "^3.2.0",
     "@types/node": "^24.13.3",
     "@vitejs/plugin-vue": "^6.0.8",
     "@vue/tsconfig": "^0.9.1",
