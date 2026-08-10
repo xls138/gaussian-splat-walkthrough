@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "initialRoom": "floor-1",
+  "unrealLayout": "/content/unreal-layout.json",
+  "tiers": {
+    "low": {
+      "label": "Low",
+      "maxPixelRatio": 1,
+      "lod": "low",
+      "splatBudget": 1250000,
+      "radialSorting": true,
+      "maxResidentRooms": 1
+    },
+    "medium": {
+      "label": "Medium",
+      "maxPixelRatio": 1.25,
+      "lod": "medium",
+      "splatBudget": 2500000,
+      "radialSorting": true,
+      "maxResidentRooms": 1
+    },
+    "high": {
+      "label": "High",
+      "maxPixelRatio": 1.75,
+      "lod": "high",
+      "splatBudget": 9000000,
+      "radialSorting": true,
+      "maxResidentRooms": 1
+    }
+  },
+  "rooms": [
+    {
+      "id": "floor-1",
+      "title": "一层",
+      "unrealMap": "",
+      "sourcePly": ""
+    }
+  ]
+}
