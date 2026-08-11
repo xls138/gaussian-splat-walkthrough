@@ -37,7 +37,7 @@ const DOOR_PROMPT_SCREEN_PIXELS = 48;
 const DOOR_PROMPT_SHOW_TIME = 0.18;
 const DOOR_PROMPT_HIDE_TIME = 0.12;
 
-const SPLAT_RUNTIME_EULER = new pc.Vec3(180, 0, 0);
+const SPLAT_RUNTIME_EULER = new pc.Vec3(-90, 270, 0);
 
 const DEBUG_PARAMS = new URLSearchParams(window.location.search);
 const DEBUG_DOORS = DEBUG_PARAMS.has("debugDoors");

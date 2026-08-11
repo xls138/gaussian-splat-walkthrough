@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "source": {
+    "project": "C:/Users/15225/project2/mipmap1/mipmap1.uproject",
+    "exportedAt": "2026-08-11T01:37:36.283162+00:00",
+    "doorNaming": "WEB_Door_<targetRoomId>, WEB_Door_<targetRoomId>__<spawnName>, or WEB_Door_exit",
+    "doorTags": "Optional tags: targetRoom=<roomId>, spawn=<spawnName>, promptRadius=8, lookAngle=45, label=<text>",
+    "colliderNaming": "All blocking StaticMeshActor components, plus WEB_Collider_*, WEB_Block_*, or WEB_Collision_* actors",
+    "spawnNaming": "WEB_Spawn_Start for initial spawn, WEB_Spawn_from-<sourceRoomId> for room entries, or PlayerStart fallback"
+  },
+  "coordinateSystem": {
+    "unreal": "X forward, Y right, Z up, centimeters",
+    "playcanvas": "X right, Y up, Z backward, meters",
+    "conversion": "pc.x = ue.y / 100, pc.y = ue.z / 100, pc.z = -ue.x / 100"
+  },
+  "rooms": {
+    "floor-1": {
+      "unrealMap": "/Game/NewMap1",
+      "spawn": {
+        "position": [
+          -2e-05,
+          0.0,
+          -143584971993.3366
+        ],
+        "yaw": -180.0,
+        "pitch": 0.0
+      },
+      "spawns": {
+        "start": {
+          "position": [
+            -2e-05,
+            0.0,
+            -143584971993.3366
+          ],
+          "yaw": -180.0,
+          "pitch": 0.0
+        }
+      },
+      "colliders": [
+        {
+          "id": "WEB_Collider_wall1",
+          "sourceActor": "WEB_Collider_wall1",
+          "sourceMesh": "/Engine/BasicShapes/Cube.Cube",
+          "center": [
+            0.41,
+            1.3,
+            3.39
+          ],
+          "type": "box",
+          "size": [
+            12.17574,
+            6.8756,
+            4.31364
+          ],
+          "yaw": 0
+        }
+      ]
+    }
+  }
+}

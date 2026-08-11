@@ -32,8 +32,13 @@
     {
       "id": "floor-1",
       "title": "一层",
-      "unrealMap": "",
-      "sourcePly": ""
+      "unrealMap": "/Game/NewMap1",
+      "sourcePly": "C:/Users/15225/Downloads/mipmap-output-test/3.ply",
+      "splat": {
+        "high": "/content/splats/floor-1.high.sog",
+        "medium": "/content/splats/floor-1.medium.sog",
+        "low": "/content/splats/floor-1.low.sog"
+      }
     }
   ]
 }

@@ -7,7 +7,11 @@
     "dev": "vite --host 0.0.0.0",
     "build": "vue-tsc -b && vite build",
     "preview": "vite preview --host 0.0.0.0",
-    "splat:help": "splat-transform --help"
+    "splat:help": "splat-transform --help",
+    "splat:convert:sog": "splat-transform -w",
+    "splat:convert": "powershell -ExecutionPolicy Bypass -File scripts/convert-splats.ps1",
+    "validate:layout": "node scripts/validate-layout.mjs",
+    "unreal:export-layout": "powershell -ExecutionPolicy Bypass -File scripts/export-unreal-layout.ps1"
   },
   "dependencies": {
     "playcanvas": "^2.21.3",
