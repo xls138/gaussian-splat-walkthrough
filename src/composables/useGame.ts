@@ -2093,7 +2093,7 @@ export function useGame(canvasRef: Ref<HTMLCanvasElement | null>) {
     } catch {
       /* ignore */
     }
-    return true;
+    return false;
   }
 
   function saveMinimapSetting(enabled: boolean): void {
