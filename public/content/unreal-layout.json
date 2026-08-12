@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "source": {
     "project": "C:/Users/15225/project2/mipmap1/mipmap1.uproject",
-    "exportedAt": "2026-08-12T02:04:28.409114+00:00",
+    "exportedAt": "2026-08-12T05:03:12.524208+00:00",
     "doorNaming": "WEB_Door_<targetRoomId>, WEB_Door_<targetRoomId>__<spawnName>, or WEB_Door_exit",
     "doorTags": "Optional tags: targetRoom=<roomId>, spawn=<spawnName>, promptRadius=8, lookAngle=45, label=<text>",
     "colliderNaming": "All blocking StaticMeshActor components, plus WEB_Collider_*, WEB_Block_*, or WEB_Collision_* actors",
@@ -29,6 +29,15 @@
         "start": {
           "position": [
             5.0,
+            0.5,
+            -13.0
+          ],
+          "yaw": -180.0,
+          "pitch": 0.0
+        },
+        "from-floor-2": {
+          "position": [
+            -4.3,
             0.5,
             -13.0
           ],
@@ -70,6 +79,221 @@
             1.0
           ],
           "yaw": 12.0
+        }
+      ],
+      "doors": [
+        {
+          "id": "to-floor-2",
+          "sourceActor": "WEB_Door_floor-2",
+          "targetRoom": "floor-2",
+          "spawn": "from-floor-1",
+          "center": [
+            -3.85,
+            0.0,
+            -10.8
+          ],
+          "promptCenter": [
+            -3.85,
+            0.35,
+            -10.8
+          ],
+          "size": [
+            1.89769,
+            4.0,
+            1.89769
+          ],
+          "forward": [
+            -0.20791,
+            0.0,
+            -0.97815
+          ],
+          "promptRadius": 8.0,
+          "lookAngle": 45.0,
+          "label": "二层"
+        }
+      ]
+    },
+    "floor-2": {
+      "unrealMap": "/Game/NewMap2",
+      "spawn": {
+        "position": [
+          -17.0,
+          0.5,
+          0.2
+        ],
+        "yaw": -119.99987,
+        "pitch": -0.0
+      },
+      "spawns": {
+        "from-floor-1": {
+          "position": [
+            -17.0,
+            0.5,
+            -11.3
+          ],
+          "yaw": -0.0,
+          "pitch": 0.0
+        },
+        "from-floor-3": {
+          "position": [
+            -17.0,
+            0.5,
+            0.2
+          ],
+          "yaw": -119.99987,
+          "pitch": -0.0
+        }
+      },
+      "colliders": [
+        {
+          "id": "WEB_Collider_wall1",
+          "sourceActor": "WEB_Collider_wall1",
+          "sourceMesh": "/Engine/BasicShapes/Cube.Cube",
+          "center": [
+            -2.32,
+            0.5,
+            -2.28
+          ],
+          "type": "box",
+          "size": [
+            10.0,
+            10.0,
+            11.0
+          ],
+          "yaw": -13.0
+        }
+      ],
+      "doors": [
+        {
+          "id": "to-floor-1",
+          "sourceActor": "WEB_Door_floor-1",
+          "targetRoom": "floor-1",
+          "spawn": "from-floor-2",
+          "center": [
+            -19.0,
+            0.0,
+            -8.2
+          ],
+          "promptCenter": [
+            -19.0,
+            0.35,
+            -8.2
+          ],
+          "size": [
+            1.6,
+            4.8,
+            1.6
+          ],
+          "forward": [
+            0.0,
+            0.0,
+            -1.0
+          ],
+          "promptRadius": 8.0,
+          "lookAngle": 45.0,
+          "label": "一层"
+        },
+        {
+          "id": "to-floor-3",
+          "sourceActor": "WEB_Door_floor-3",
+          "targetRoom": "floor-3",
+          "spawn": "from-floor-2",
+          "center": [
+            -19.0,
+            0.0,
+            -3.5
+          ],
+          "promptCenter": [
+            -19.0,
+            0.35,
+            -3.5
+          ],
+          "size": [
+            1.6,
+            4.8,
+            1.6
+          ],
+          "forward": [
+            0.0,
+            0.0,
+            -1.0
+          ],
+          "promptRadius": 8.0,
+          "lookAngle": 45.0,
+          "label": "三层"
+        }
+      ]
+    },
+    "floor-3": {
+      "unrealMap": "/Game/NewMap3",
+      "spawn": {
+        "position": [
+          3.0,
+          0.5,
+          -6.48
+        ],
+        "yaw": -180.0,
+        "pitch": 0.0
+      },
+      "spawns": {
+        "from-floor-2": {
+          "position": [
+            3.0,
+            0.5,
+            -6.48
+          ],
+          "yaw": -180.0,
+          "pitch": 0.0
+        }
+      },
+      "colliders": [
+        {
+          "id": "WEB_Collider_wall1",
+          "sourceActor": "WEB_Collider_wall1",
+          "sourceMesh": "/Engine/BasicShapes/Cube.Cube",
+          "center": [
+            -6.6,
+            0.8,
+            -2.5
+          ],
+          "type": "box",
+          "size": [
+            7.0,
+            7.0,
+            1.0
+          ],
+          "yaw": -50.0
+        }
+      ],
+      "doors": [
+        {
+          "id": "to-floor-2",
+          "sourceActor": "WEB_Door_floor-2",
+          "targetRoom": "floor-2",
+          "spawn": "from-floor-3",
+          "center": [
+            1.55,
+            0.0,
+            -8.2
+          ],
+          "promptCenter": [
+            1.55,
+            0.35,
+            -8.2
+          ],
+          "size": [
+            2.4,
+            8.0,
+            2.4
+          ],
+          "forward": [
+            0.0,
+            0.0,
+            -1.0
+          ],
+          "promptRadius": 8.0,
+          "lookAngle": 45.0,
+          "label": "二层"
         }
       ]
     }

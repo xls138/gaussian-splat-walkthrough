@@ -39,6 +39,28 @@
         "medium": "/content/splats/floor-1.medium.sog",
         "low": "/content/splats/floor-1.low.sog"
       }
+    },
+    {
+      "id": "floor-2",
+      "title": "二层",
+      "unrealMap": "/Game/NewMap2",
+      "sourcePly": "C:/Users/15225/Downloads/mipmap-output-test/4.ply",
+      "splat": {
+        "high": "/content/splats/floor-2.high.sog",
+        "medium": "/content/splats/floor-2.medium.sog",
+        "low": "/content/splats/floor-2.low.sog"
+      }
+    },
+    {
+      "id": "floor-3",
+      "title": "三层",
+      "unrealMap": "/Game/NewMap3",
+      "sourcePly": "C:/Users/15225/Downloads/mipmap-output-test/5.ply",
+      "splat": {
+        "high": "/content/splats/floor-3.high.sog",
+        "medium": "/content/splats/floor-3.medium.sog",
+        "low": "/content/splats/floor-3.low.sog"
+      }
     }
   ]
 }
