@@ -10,7 +10,8 @@ param(
   [ValidateRange(0, 3)]
   [int]$HighHarmonics = 2,
   [int]$Iterations = 10,
-  [string]$Gpu = ""
+  [string]$Gpu = "",
+  [string]$Rotate = ""
 )
 
 $ErrorActionPreference = "Stop"
@@ -78,8 +79,11 @@ foreach ($roomItem in $selectedRooms) {
     if ($Gpu) {
       $args += @("-g", $Gpu)
     }
+    $args += @($source)
+    if ($Rotate) {
+      $args += @("-r", $Rotate)
+    }
     $args += @(
-      $source,
       "-N",
       "-H", "$harmonics",
       "-F", "$targetCount",
