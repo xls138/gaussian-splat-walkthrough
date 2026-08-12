@@ -205,7 +205,7 @@ async function enterLandscapeFullscreen(): Promise<void> {
       await target.webkitRequestFullscreen?.();
     }
     const orientation = screen.orientation as ScreenOrientation & {
-      lock?: (orientation: OrientationLockType) => Promise<void>;
+      lock?: (orientation: "any" | "natural" | "landscape" | "portrait" | "landscape-primary" | "landscape-secondary" | "portrait-primary" | "portrait-secondary") => Promise<void>;
     };
     await orientation.lock?.("landscape").catch(() => undefined);
   } catch {
