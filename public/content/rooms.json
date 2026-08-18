@@ -61,6 +61,17 @@
         "medium": "/content/splats/floor-3.medium.sog",
         "low": "/content/splats/floor-3.low.sog"
       }
+    },
+    {
+      "id": "hall-1",
+      "title": "大厅",
+      "unrealMap": "/Game/NewMap4",
+      "sourcePly": "C:/Users/15225/Downloads/mipmap-output-test/6.ply",
+      "splat": {
+        "high": "/content/splats/hall-1.high.sog",
+        "medium": "/content/splats/hall-1.medium.sog",
+        "low": "/content/splats/hall-1.low.sog"
+      }
     }
   ]
 }

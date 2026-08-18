@@ -332,7 +332,9 @@ export function useGame(canvasRef: Ref<HTMLCanvasElement | null>) {
 
     if (supportingFloor)
       return supportingFloor.center.y + supportingFloor.size!.y / 2;
-    return state.currentRoom?.bounds?.min?.[1] ?? 0;
+    return (
+      state.currentRoom?.bounds?.min?.[1] ?? referenceY - PLAYER_EYE_HEIGHT
+    );
   }
 
   function intersectsPlayerCollider(

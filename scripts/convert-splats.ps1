@@ -75,20 +75,28 @@ foreach ($roomItem in $selectedRooms) {
       $harmonics = $HighHarmonics
     }
 
-    $args = @("-w", "-i", "$Iterations")
+    $tempPly = "$output.temp.ply"
+
+    $decimateArgs = @("-w")
     if ($Gpu) {
-      $args += @("-g", $Gpu)
+      $decimateArgs += @("-g", $Gpu)
     }
-    $args += @($source)
+    $decimateArgs += @($source)
     if ($Rotate) {
-      $args += @("-r", $Rotate)
+      $decimateArgs += @("-r", $Rotate)
     }
-    $args += @(
+    $decimateArgs += @(
       "-N",
       "-H", "$harmonics",
-      "-F", "$targetCount",
-      $output
+      "-d", "$targetCount",
+      $tempPly
     )
+
+    $sogArgs = @("-w", "-i", "$Iterations")
+    if ($Gpu) {
+      $sogArgs += @("-g", $Gpu)
+    }
+    $sogArgs += @($tempPly, $output)
 
     Write-Host ""
     Write-Host "Converting $($roomItem.id) [$tierName]"
@@ -96,10 +104,21 @@ foreach ($roomItem in $selectedRooms) {
     Write-Host "  output: $output"
     Write-Host "  count : $targetCount"
     Write-Host "  SH    : $harmonics"
-    & $tool @args
 
+    Write-Host "  [Step 1/2] Decimating and filtering to temporary PLY..."
+    & $tool @decimateArgs
     if ($LASTEXITCODE -ne 0) {
-      throw "splat-transform failed for $($roomItem.id) [$tierName] with exit code $LASTEXITCODE"
+      Remove-Item -LiteralPath $tempPly -ErrorAction SilentlyContinue
+      throw "splat-transform (decimate) failed for $($roomItem.id) [$tierName] with exit code $LASTEXITCODE"
     }
+
+    Write-Host "  [Step 2/2] Compressing temporary PLY to SOG..."
+    & $tool @sogArgs
+    if ($LASTEXITCODE -ne 0) {
+      Remove-Item -LiteralPath $tempPly -ErrorAction SilentlyContinue
+      throw "splat-transform (compress) failed for $($roomItem.id) [$tierName] with exit code $LASTEXITCODE"
+    }
+
+    Remove-Item -LiteralPath $tempPly -ErrorAction SilentlyContinue
   }
 }

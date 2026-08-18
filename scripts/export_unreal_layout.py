@@ -21,6 +21,10 @@ ROOMS = [
     {
         "id": "floor-3",
         "map": "/Game/NewMap3",
+    },
+    {
+        "id": "hall-1",
+        "map": "/Game/NewMap4",
     }
 ]
 
@@ -28,6 +32,7 @@ ROOM_LABELS = {
     "floor-1": "一层",
     "floor-2": "二层",
     "floor-3": "三层",
+    "hall-1": "大厅",
 }
 
 ROOM_IDS = {room["id"] for room in ROOMS}
