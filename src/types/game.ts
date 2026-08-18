@@ -2,13 +2,19 @@
 export interface RoomConfig {
   id: string;
   title: string;
+  // 画质分级
   splat?: Record<string, string>;
   placeholder?: { color?: string };
   bounds?: { min: number[]; max: number[] };
+  // 碰撞体
   colliders?: RawCollider[];
+  // 传送门
   doors?: RawDoor[];
+  // 默认出生点
   spawn?: RawSpawn;
+  // 命名出生点
   spawns?: Record<string, RawSpawn>;
+  // Unreal 地图地址
   unrealMap?: string;
 }
 
@@ -41,6 +47,7 @@ export interface RawDoor {
 export interface RawSpawn {
   position?: number[];
   yaw?: number;
+  // 俯仰角
   pitch?: number;
 }
 
@@ -66,10 +73,14 @@ export interface UnrealLayout {
 }
 
 export interface UnrealRoom {
+  // 默认出生点
   spawn?: RawSpawn;
+  // 命名出生点
   spawns?: Record<string, RawSpawn>;
   bounds?: { min: number[]; max: number[] };
+  // 碰撞体
   colliders?: RawCollider[];
+  // 传送门
   doors?: RawDoor[];
 }
 
