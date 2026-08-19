@@ -44,14 +44,14 @@ npm run preview
 
 ### 桌面端
 
-| 按键 | 功能 |
-|------|------|
-| `W A S D` | 移动 |
-| 鼠标 | 视角（点击进入 Pointer Lock） |
-| `Shift` | 下蹲切换 |
-| `E` | 交互（进入房间 / 查看展品） |
-| `` ` `` | 打开菜单 |
-| `Esc` | 关闭展品详情 / 打开菜单 |
+| 按键      | 功能                          |
+| --------- | ----------------------------- |
+| `W A S D` | 移动                          |
+| 鼠标      | 视角（点击进入 Pointer Lock） |
+| `Shift`   | 下蹲切换                      |
+| `E`       | 交互（进入房间 / 查看展品）   |
+| `` ` ``   | 打开菜单                      |
+| `Esc`     | 关闭展品详情 / 打开菜单       |
 
 ### 移动端
 
@@ -101,9 +101,13 @@ npm run preview
   "initialRoom": "floor-1",
   "unrealLayout": "/content/unreal-layout.json",
   "tiers": {
-    "low":    { "maxPixelRatio": 1,    "lod": "low",    "splatBudget": 1250000 },
-    "medium": { "maxPixelRatio": 1.25, "lod": "medium", "splatBudget": 2500000 },
-    "high":   { "maxPixelRatio": 1.75, "lod": "high",   "splatBudget": 9000000 }
+    "low": { "maxPixelRatio": 1, "lod": "low", "splatBudget": 1250000 },
+    "medium": {
+      "maxPixelRatio": 1.25,
+      "lod": "medium",
+      "splatBudget": 2500000
+    },
+    "high": { "maxPixelRatio": 1.75, "lod": "high", "splatBudget": 9000000 }
   },
   "rooms": [
     {
@@ -118,6 +122,36 @@ npm run preview
 ### Unreal 布局
 
 碰撞体、门触发器和出生点可通过 Unreal Engine 导出至 `unreal-layout.json`，运行时与 `rooms.json` 合并。详见 `scripts/export_unreal_layout.py`。
+
+#### 命名约定
+
+在 Unreal Engine 场景中，通过特定命名前缀的 Actor 来标记各类对象，导出脚本会自动识别并转换：
+
+| 类别                   | 命名格式                                                  | 说明                                                                                     |
+| ---------------------- | --------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| 初始出生点             | `WEB_Spawn_Start`                                         | 玩家进入应用时的出生位置                                                                 |
+| 房间入口出生点         | `WEB_Spawn_from-<sourceRoomId>`                           | 从指定房间传送过来时的出生点，如 `WEB_Spawn_from-floor-1`                                |
+| 出生点（兜底）         | `PlayerStart`                                             | UE 内置出生点，作为以上命名的回退                                                        |
+| 阻挡盒                 | `WEB_Collider_*`                                          | 显式碰撞体，如 `WEB_Collider_wall1`                                                      |
+| 阻挡盒（别名）         | `WEB_Block_*` / `WEB_Collision_*`                         | 同上，两种可选前缀                                                                       |
+| 静态网格阻挡           | 任意 `StaticMeshActor`                                    | 碰撞启用且 Profile 以 `block` 开头的 StaticMeshActor 会自动导出为碰撞体（立方体/圆柱体） |
+| 门触发器               | `WEB_Door_<targetRoomId>`                                 | 传送到目标房间，如 `WEB_Door_floor-2`                                                    |
+| 门触发器（指定出生点） | `WEB_Door_<targetRoomId>__<spawnName>`                    | 双下划线后跟出生点名，如 `WEB_Door_floor-2__entrance`                                    |
+| 门触发器（出口）       | `WEB_Door_exit`                                           | 出口门，目标房间通过 `targetRoom=<roomId>` 标签或 `EXIT_TARGETS` 映射确定                |
+| 门触发器（配对形式）   | `<targetRoomId>_Door` + `<targetRoomId>_HitBox`           | Door 为提示位置、HitBox 为触发范围，两者配对使用                                         |
+| 门触发器（出口配对）   | `<targetRoomId>_Exit_Door` + `<targetRoomId>_Exit_HitBox` | 出口门的配对形式                                                                         |
+
+#### 门 Actor 可选标签
+
+门触发器 Actor 可附加以下标签（Tag）来覆盖默认行为：
+
+| 标签                  | 默认值                | 说明                                                 |
+| --------------------- | --------------------- | ---------------------------------------------------- |
+| `targetRoom=<roomId>` | 由命名推导            | 显式指定目标房间（`WEB_Door_exit` 在公共区域时必填） |
+| `spawn=<spawnName>`   | `from-<sourceRoomId>` | 传送后在目标房间的出生点名                           |
+| `promptRadius=8`      | `8.0`                 | 触发提示的距离（米）                                 |
+| `lookAngle=45`        | `45.0`                | 需朝向门的角度范围（度）                             |
+| `label=<text>`        | 房间标题              | 提示文字                                             |
 
 ## 工具脚本
 
@@ -141,12 +175,12 @@ npm run validate:layout
 
 在 URL 中添加查询参数启用调试可视化：
 
-| 参数 | 功能 |
-|------|------|
-| `?debugDoors` | 显示门触发器 AABB |
-| `?debugCollision` | 显示碰撞体 |
-| `?debugBounds` | 显示房间边界 |
-| `?debugExhibits` | 显示展品触发范围 |
-| `?debugCoordinate` | 显示实时坐标 |
-| `?debugRoom=floor-2` | 直接加载指定房间 |
-| `?splatSort=radial` | 强制径向排序 |
+| 参数                 | 功能              |
+| -------------------- | ----------------- |
+| `?debugDoors`        | 显示门触发器 AABB |
+| `?debugCollision`    | 显示碰撞体        |
+| `?debugBounds`       | 显示房间边界      |
+| `?debugExhibits`     | 显示展品触发范围  |
+| `?debugCoordinate`   | 显示实时坐标      |
+| `?debugRoom=floor-2` | 直接加载指定房间  |
+| `?splatSort=radial`  | 强制径向排序      |

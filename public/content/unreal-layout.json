@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "source": {
     "project": "C:/Users/15225/project2/mipmap1/mipmap1.uproject",
-    "exportedAt": "2026-08-18T08:03:25.123164+00:00",
+    "exportedAt": "2026-08-19T06:38:44.618742+00:00",
     "doorNaming": "WEB_Door_<targetRoomId>, WEB_Door_<targetRoomId>__<spawnName>, or WEB_Door_exit",
     "doorTags": "Optional tags: targetRoom=<roomId>, spawn=<spawnName>, promptRadius=8, lookAngle=45, label=<text>",
     "colliderNaming": "All blocking StaticMeshActor components, plus WEB_Collider_*, WEB_Block_*, or WEB_Collision_* actors",
@@ -146,11 +146,11 @@
       "unrealMap": "/Game/NewMap2",
       "spawn": {
         "position": [
-          -17.0,
+          -5.0,
           2.0,
-          0.2
+          4.0
         ],
-        "yaw": -119.99987,
+        "yaw": -180.0,
         "pitch": -0.0
       },
       "spawns": {
@@ -171,6 +171,15 @@
           ],
           "yaw": -119.99987,
           "pitch": -0.0
+        },
+        "from-room-2": {
+          "position": [
+            -5.0,
+            2.0,
+            4.0
+          ],
+          "yaw": -180.0,
+          "pitch": -0.0
         }
       },
       "colliders": [
@@ -187,7 +196,7 @@
           "size": [
             10.0,
             10.0,
-            11.0
+            10.0
           ],
           "yaw": -13.0
         }
@@ -250,6 +259,35 @@
           "promptRadius": 8.0,
           "lookAngle": 45.0,
           "label": "三层"
+        },
+        {
+          "id": "to-room-2",
+          "sourceActor": "WEB_Door_room-2",
+          "targetRoom": "room-2",
+          "spawn": "from-floor-2",
+          "center": [
+            -5.5,
+            0.8,
+            4.1
+          ],
+          "promptCenter": [
+            -5.5,
+            1.15,
+            4.1
+          ],
+          "size": [
+            2.87837,
+            6.4,
+            2.87837
+          ],
+          "forward": [
+            0.22495,
+            0.0,
+            -0.97437
+          ],
+          "promptRadius": 8.0,
+          "lookAngle": 45.0,
+          "label": "打印室"
         }
       ]
     },
@@ -257,11 +295,11 @@
       "unrealMap": "/Game/NewMap3",
       "spawn": {
         "position": [
-          3.0,
+          -10.4,
           2.0,
-          -6.48
+          -2.0
         ],
-        "yaw": -180.0,
+        "yaw": -119.99987,
         "pitch": 0.0
       },
       "spawns": {
@@ -272,6 +310,15 @@
             -6.48
           ],
           "yaw": -180.0,
+          "pitch": 0.0
+        },
+        "from-room-1": {
+          "position": [
+            -10.4,
+            2.0,
+            -2.0
+          ],
+          "yaw": -119.99987,
           "pitch": 0.0
         }
       },
@@ -323,6 +370,35 @@
           "promptRadius": 8.0,
           "lookAngle": 45.0,
           "label": "二层"
+        },
+        {
+          "id": "to-room-1",
+          "sourceActor": "WEB_Door_room-1",
+          "targetRoom": "room-1",
+          "spawn": "from-floor-3",
+          "center": [
+            -11.8,
+            0.9,
+            -1.1
+          ],
+          "promptCenter": [
+            -11.8,
+            1.25,
+            -1.1
+          ],
+          "size": [
+            2.4,
+            4.8,
+            2.4
+          ],
+          "forward": [
+            0.0,
+            0.0,
+            -1.0
+          ],
+          "promptRadius": 8.0,
+          "lookAngle": 45.0,
+          "label": "总经理办公室"
         }
       ]
     },
@@ -413,6 +489,150 @@
           "promptRadius": 8.0,
           "lookAngle": 45.0,
           "label": "一层"
+        }
+      ]
+    },
+    "room-1": {
+      "unrealMap": "/Game/NewMap5",
+      "spawn": {
+        "position": [
+          -35.6,
+          -0.75,
+          -12.9
+        ],
+        "yaw": -90.0,
+        "pitch": 0.0
+      },
+      "spawns": {
+        "from-floor-3": {
+          "position": [
+            -35.6,
+            -0.75,
+            -12.9
+          ],
+          "yaw": -90.0,
+          "pitch": 0.0
+        }
+      },
+      "colliders": [
+        {
+          "id": "WEB_Collider_cube1",
+          "sourceActor": "WEB_Collider_cube1",
+          "sourceMesh": "/Engine/BasicShapes/Cube.Cube",
+          "center": [
+            -22.3,
+            -7.7,
+            2.0
+          ],
+          "type": "box",
+          "size": [
+            14.0,
+            4.0,
+            5.0
+          ],
+          "yaw": -0.0
+        },
+        {
+          "id": "WEB_Collider_cube2",
+          "sourceActor": "WEB_Collider_cube2",
+          "sourceMesh": "/Engine/BasicShapes/Cube.Cube",
+          "center": [
+            -13.0,
+            -7.8,
+            5.1
+          ],
+          "type": "box",
+          "size": [
+            4.0,
+            3.0,
+            11.0
+          ],
+          "yaw": -0.0
+        }
+      ],
+      "doors": [
+        {
+          "id": "to-floor-3",
+          "sourceActor": "WEB_Door_floor-3",
+          "targetRoom": "floor-3",
+          "spawn": "from-room-1",
+          "center": [
+            -36.9,
+            -3.9,
+            -16.6
+          ],
+          "promptCenter": [
+            -36.9,
+            -3.55,
+            -16.6
+          ],
+          "size": [
+            4.0,
+            12.0,
+            4.0
+          ],
+          "forward": [
+            0.0,
+            0.0,
+            -1.0
+          ],
+          "promptRadius": 8.0,
+          "lookAngle": 45.0,
+          "label": "三层"
+        }
+      ]
+    },
+    "room-2": {
+      "unrealMap": "/Game/NewMap6",
+      "spawn": {
+        "position": [
+          -3.0,
+          3.0,
+          -15.0
+        ],
+        "yaw": -180.0,
+        "pitch": -0.0
+      },
+      "spawns": {
+        "from-floor-2": {
+          "position": [
+            -3.0,
+            3.0,
+            -15.0
+          ],
+          "yaw": -180.0,
+          "pitch": -0.0
+        }
+      },
+      "doors": [
+        {
+          "id": "to-floor-2",
+          "sourceActor": "WEB_Door_floor-2",
+          "targetRoom": "floor-2",
+          "spawn": "from-room-2",
+          "center": [
+            -2.2,
+            -2.1,
+            -15.0
+          ],
+          "promptCenter": [
+            -2.2,
+            -1.75,
+            -15.0
+          ],
+          "size": [
+            6.4,
+            16.0,
+            4.0
+          ],
+          "forward": [
+            0.0,
+            0.0,
+            -1.0
+          ],
+          "promptRadius": 8.0,
+          "lookAngle": 45.0,
+          "label": "二层"
         }
       ]
     }

@@ -72,6 +72,28 @@
         "medium": "/content/splats/hall-1.medium.sog",
         "low": "/content/splats/hall-1.low.sog"
       }
+    },
+    {
+      "id": "room-1",
+      "title": "总经理办公室",
+      "unrealMap": "/Game/NewMap5",
+      "sourcePly": "C:/Users/15225/Downloads/mipmap-output-test/7.ply",
+      "splat": {
+        "high": "/content/splats/room-1.high.sog",
+        "medium": "/content/splats/room-1.medium.sog",
+        "low": "/content/splats/room-1.low.sog"
+      }
+    },
+    {
+      "id": "room-2",
+      "title": "打印室",
+      "unrealMap": "/Game/NewMap6",
+      "sourcePly": "C:/Users/15225/Downloads/mipmap-output-test/10.ply",
+      "splat": {
+        "high": "/content/splats/room-2.high.sog",
+        "medium": "/content/splats/room-2.medium.sog",
+        "low": "/content/splats/room-2.low.sog"
+      }
     }
   ]
 }
