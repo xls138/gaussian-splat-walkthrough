@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 1,
+  "exhibits": [
+    {
+      "id": "exhibit-come3d_gen1",
+      "roomId": "floor-1",
+      "title": "Come3D!第一代",
+      "time": "2009.10",
+      "position": [11.48, 1, 5.03],
+      "promptRadius": 1,
+      "image": ["/exhibits/come3d_gen1.jpg"],
+      "url": "",
+      "description": "由数智立方（原麦田网络）于2012年4月研发的第一代3D打印机，采用FDM技术，打印尺寸为120×120mm，使用木质表面和PLA耗材的3D打印设备。"
+    },
+    {
+      "id": "exhibit-come3d_gen2",
+      "roomId": "floor-1",
+      "title": "Come3D!第二代",
+      "time": "2012.04",
+      "position": [11.88, 1, 9.06],
+      "promptRadius": 1,
+      "image": ["/exhibits/come3d_gen2.jpg"],
+      "url": "",
+      "description": "由数智立方（原麦田网络）研发的第二代3D打印机，延续了第一代的优秀特性，采用FDM技术，打印尺寸为120×120mm，可使用PLA耗材。相比第一代，它进行了优化和提升，增加了更多功能特性。"
+    },
+    {
+      "id": "exhibit-iceman_d150_proto",
+      "roomId": "floor-1",
+      "title": "ICEMAN3D D150样机",
+      "time": "2012.10",
+      "position": [11.5, 1, 9.93],
+      "promptRadius": 1,
+      "image": ["/exhibits/iceman_d150_proto.jpg"],
+      "url": "",
+      "description": "由数智立方（原麦田网络）于2012年10月研发的3D打印机，打印尺寸为200×200mm，使用PLA耗材。带有触控显示屏，使用户能够便捷地进行脱机打印和其他操作。"
+    },
+    {
+      "id": "exhibit-iceman_d150_v1",
+      "roomId": "floor-1",
+      "title": "ICEMAN3D D150第一代",
+      "time": "2013.10",
+      "position": [8.02, 1, 9.92],
+      "promptRadius": 1,
+      "image": ["/exhibits/iceman_d150_v1.jpg"],
+      "url": "",
+      "description": "由数智立方（原麦田网络）研发的一款方便易用的3D打印机，具有高精度、稳定可靠和小巧轻便等特点，同时配备了小显示屏，可实时显示打印进度和相关信息，是适合各种应用场景的理想选择。"
+    },
+    {
+      "id": "exhibit-iceman_d150_v2",
+      "roomId": "floor-1",
+      "title": "ICEMAN3D D150第二代",
+      "time": "2014.10",
+      "position": [4.37, 1, 10.55],
+      "promptRadius": 1,
+      "image": ["/exhibits/iceman_d150_v2.jpg"],
+      "url": "",
+      "description": "由数智立方（原麦田网络）研发制造。具有高精度、稳定可靠、易操作等优点，配备了4.5寸高清触摸屏、自动校准和断料检测等功能，支持PLA、TPU和ICEMAN3D彩色耗材等多种材料，适用于各种应用场景。"
+    },
+    {
+      "id": "exhibit-iceman_d100_v1",
+      "roomId": "floor-1",
+      "title": "ICEMAN3D D100第一代",
+      "time": "2015.07",
+      "position": [-1.19, 1, 11.91],
+      "promptRadius": 1,
+      "image": ["/exhibits/iceman_d100_v1.jpg"],
+      "url": "",
+      "description": "由数智立方（原麦田网络）于2015年10月研发。其打印尺寸为125×215mm，采用FDM热熔沉积型打印技术，支持普通PLA耗材、TPU弹性耗材和ICEMAN3D彩色耗材。"
+    },
+    {
+      "id": "exhibit-chocolate_3d_printer",
+      "roomId": "floor-1",
+      "title": "自助巧克力3D打印机",
+      "time": "2017.11",
+      "position": [-4.86, 1, 12.57],
+      "promptRadius": 1,
+      "image": ["/exhibits/chocolate_3d_printer.jpg"],
+      "url": "",
+      "description": "由数智立方（原麦田网络）与时印科技合作研发，采用FDM热熔融沉积型技术的专用打印机，可将巧克力材料逐层打印成各种形状和样式，操作简单方便，是制作个性化巧克力的理想选择。"
+    },
+    {
+      "id": "exhibit-iceman_d100_v2",
+      "roomId": "floor-1",
+      "title": "ICEMAN3D D100第二代",
+      "time": "2022.06",
+      "position": [-8.55, 1, 13.23],
+      "promptRadius": 1,
+      "image": ["/exhibits/iceman_d100_v2.jpg"],
+      "url": "",
+      "description": "由数智立方（原麦田网络）研发的一款高性能的3D打印机，具备高精度、稳定可靠和多材料打印能力，适用于制造复杂结构、精细细节和高质量的3D打印模型。"
+    },
+    {
+      "id": "exhibit-bambu_p1p",
+      "roomId": "floor-1",
+      "title": "拓竹P1P",
+      "time": "2023.10",
+      "position": [-8.95, 1, 12.81],
+      "promptRadius": 1,
+      "image": ["/exhibits/bambu_p1p.jpg"],
+      "url": "",
+      "description": "采用FDM热熔融沉积型打印技术，高精度、稳定可靠、快速打印，具备多种功能如自动热床调平、监控摄像头等，支持多色打印，满足各种需求。"
+    },
+    {
+      "id": "exhibit-bambu_a1",
+      "roomId": "floor-1",
+      "title": "拓竹A1",
+      "time": "2023.12",
+      "position": [-9.42, 1, 8.49],
+      "promptRadius": 1,
+      "image": ["/exhibits/bambu_a1.jpg"],
+      "url": "",
+      "description": "是一款简单易用的3D打印机，采用悬臂式结构，打印速度快，可实现多色打印，具有自动校准功能，低噪音、高精度，适用于各种应用场景。"
+    }
+  ]
+}
